@@ -52,9 +52,16 @@ Sem configuração, o botão "Enviar mensagem" abre o aplicativo de e-mail do vi
 
 ## 4. Publicar em felipemagalhaes.com.br (GitHub Pages, gratuito)
 
-O site fica em um repositório público do GitHub e é servido pelo GitHub Pages. O arquivo `CNAME` desta pasta informa o domínio; o `.nojekyll` faz o GitHub publicar os arquivos como estão.
+O repositório tem o site dentro da pasta `site`. O arquivo `.github/workflows/pages.yml`, na raiz do repositório, manda o GitHub publicar essa pasta a cada envio para o branch `main`.
 
-**DNS (feito uma vez, no Registro.br > domínio > DNS > Configurar zona DNS):**
+**No GitHub (uma vez):**
+
+1. O repositório precisa ser **público** (Settings > General > Danger Zone > Change visibility).
+2. Em Settings > Pages, escolha "GitHub Actions" em "Source".
+3. No mesmo lugar, preencha "Custom domain" com `felipemagalhaes.com.br` e salve.
+4. Depois que o DNS propagar, marque "Enforce HTTPS".
+
+**DNS (uma vez, no Registro.br > domínio > DNS > Configurar zona DNS):**
 
 | Tipo | Nome | Valor |
 |---|---|---|
@@ -62,11 +69,11 @@ O site fica em um repositório público do GitHub e é servido pelo GitHub Pages
 | A | (domínio) | 185.199.109.153 |
 | A | (domínio) | 185.199.110.153 |
 | A | (domínio) | 185.199.111.153 |
-| CNAME | www | SEU-USUARIO.github.io |
+| CNAME | www | felipemagalhaes90.github.io |
 
 Não apague nem altere os registros MX e TXT (são os do e-mail) e não troque os servidores DNS.
 
-**Para atualizar o site depois:** abra esta pasta no VS Code, altere os arquivos, vá em Controle do Código-Fonte, escreva uma mensagem, clique em Confirmar (Commit) e depois em Sincronizar. Em um ou dois minutos a alteração está no ar.
+**Para atualizar o site depois:** altere os arquivos, vá em Controle do Código-Fonte no VS Code, escreva uma mensagem, clique em Confirmar (Commit) e depois em Sincronizar. A publicação roda sozinha; acompanhe na aba Actions do repositório.
 
 ## Quando lançar as automações
 
