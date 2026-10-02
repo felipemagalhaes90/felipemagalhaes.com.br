@@ -21,7 +21,7 @@ Dê dois cliques em `index.html`. Ele abre no navegador.
 - `whatsapp`: só números, com 55 + DDD (já preenchido). Vazio = botões de WhatsApp ficam ocultos.
 - `email`: confira se é o e-mail que você quer divulgar.
 - `linkedin`: endereço completo do perfil (já preenchido). Vazio = link oculto.
-- `formEndpoint`: endereço do serviço que recebe o formulário (passo 3).
+- `formChave`: chave do Web3Forms, que faz as mensagens do formulário chegarem no seu e-mail (passo 3).
 
 ## 2. Adicionar um projeto
 
@@ -39,16 +39,18 @@ Cada projeto ganha um link direto, útil para mandar a um cliente: `seudominio.c
 
 ## Cores
 
-Tema escuro nas cores dos relatórios: amarelo `#FED51B` e ardósia `#3A444A`, com fundos em ardósia mais escura. Fonte: Inter. Tudo fica no bloco `:root`, no topo de `assets/css/style.css`.
+Tema escuro, quase preto (`#0F1316` e `#0A0D0F`), com o amarelo dos relatórios `#FED51B` como destaque. Fonte: Inter. Tudo fica no bloco `:root`, no topo de `assets/css/style.css`.
 
-## 3. Ativar o formulário
+## 3. Formulário de contato
 
-Sem configuração, o botão "Enviar mensagem" abre o aplicativo de e-mail do visitante com a mensagem pronta. Para receber direto na sua caixa de entrada:
+As mensagens enviadas pelo formulário chegam direto no seu e-mail, pelo serviço gratuito Web3Forms. O visitante não sai do site.
 
-1. Crie uma conta em um serviço de formulários para sites estáticos (ex.: Formspree ou Web3Forms; ambos têm plano gratuito).
-2. Crie um formulário e copie o endereço de envio (endpoint).
-3. Cole em `formEndpoint` no `config.js`.
+1. Acesse https://web3forms.com, informe o e-mail que vai receber as mensagens e clique em "Create Access Key".
+2. Copie a chave que chega nesse e-mail.
+3. Cole em `formChave` no `config.js`.
 4. Envie uma mensagem de teste pelo site.
+
+Sem chave, o formulário avisa que não está configurado e mostra o seu e-mail.
 
 ## 4. Publicar em felipemagalhaes.com.br (GitHub Pages, gratuito)
 

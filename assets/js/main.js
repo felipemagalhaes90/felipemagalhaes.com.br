@@ -262,15 +262,31 @@
     status.className = "form__status" + (tipo ? " " + tipo : "");
   }
 
+  // Telefone: aceita só números e formata como (DD) 99999-9999 enquanto a pessoa digita
+  var tel = $("f-telefone");
+  function digitosTelefone() {
+    var d = tel.value.replace(/\D/g, "");
+    if (d.length > 11 && d.indexOf("55") === 0) d = d.slice(2); // tira o +55, se digitado
+    return d.slice(0, 11);
+  }
+  tel.addEventListener("input", function () {
+    var d = digitosTelefone();
+    var f = d;
+    if (d.length > 2) f = "(" + d.slice(0, 2) + ") " + d.slice(2);
+    if (d.length > 6) f = "(" + d.slice(0, 2) + ") " + d.slice(2, d.length - 4) + "-" + d.slice(-4);
+    tel.value = f;
+  });
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if ($("f-gotcha").value) return; // preenchido só por robôs
 
     var nome = $("f-nome"), mail = $("f-email"), msg = $("f-mensagem");
     var problemas = [];
-    [nome, mail, msg].forEach(function (c) { c.classList.remove("invalido"); });
+    [nome, mail, tel, msg].forEach(function (c) { c.classList.remove("invalido"); });
     if (!nome.value.trim()) { nome.classList.add("invalido"); problemas.push("seu nome"); }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail.value.trim())) { mail.classList.add("invalido"); problemas.push("um e-mail válido"); }
+    if (!/^[1-9]{2}\d{8,9}$/.test(digitosTelefone())) { tel.classList.add("invalido"); problemas.push("um telefone com DDD"); }
     if (!msg.value.trim()) { msg.classList.add("invalido"); problemas.push("a mensagem"); }
     if (problemas.length) {
       avisar("Preencha " + problemas.join(", ").replace(/, ([^,]*)$/, " e $1") + ".", "erro");
@@ -278,40 +294,37 @@
       return;
     }
 
-    var destino = urlSegura(contato.formEndpoint || "");
-    if (destino) {
-      enviar.disabled = true;
-      avisar("Enviando…");
-      fetch(destino, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
-        .then(function (r) {
-          if (!r.ok) throw new Error("HTTP " + r.status);
-          form.reset();
-          avisar("Mensagem enviada. Obrigado pelo contato, retorno em breve.", "ok");
-        })
-        .catch(function () {
-          avisar("Não foi possível enviar agora. Tente de novo ou escreva para " + email + ".", "erro");
-        })
-        .then(function () { enviar.disabled = false; });
+    var chave = String(contato.formChave || "").trim();
+    var destino = chave ? "https://api.web3forms.com/submit" : urlSegura(contato.formEndpoint || "");
+    var reserva = email ? " Se preferir, escreva para " + email + "." : "";
+    if (!destino) {
+      avisar("O formulário ainda não está configurado." + reserva, "erro");
       return;
     }
 
-    // Sem serviço de formulário configurado: abre o e-mail do visitante com a mensagem pronta.
-    var corpo = [
-      "Nome: " + nome.value.trim(),
-      "E-mail: " + mail.value.trim(),
-      $("f-empresa").value.trim() ? "Empresa: " + $("f-empresa").value.trim() : "",
-      "Assunto: " + $("f-assunto").value,
-      "",
-      msg.value.trim()
-    ].filter(function (l, i) { return l !== "" || i === 4; }).join("\n");
-
-    if (email) {
-      window.location.href = "mailto:" + email +
-        "?subject=" + encodeURIComponent("Contato pelo site: " + $("f-assunto").value) +
-        "&body=" + encodeURIComponent(corpo);
-      avisar("Abrimos o seu aplicativo de e-mail com a mensagem pronta. Se nada abrir, escreva para " + email + ".");
-    } else {
-      avisar("O formulário ainda não está configurado.", "erro");
+    var dados = new FormData(form);
+    dados.delete("_gotcha");
+    dados.append("subject", "Contato pelo site: " + $("f-assunto").value);
+    if (chave) {
+      dados.append("access_key", chave);
+      dados.append("from_name", "Site felipemagalhaes.com.br");
     }
+
+    enviar.disabled = true;
+    avisar("Enviando…");
+    fetch(destino, { method: "POST", body: dados, headers: { Accept: "application/json" } })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok || j.success === false) throw new Error(j.message || "HTTP " + r.status);
+        });
+      })
+      .then(function () {
+        form.reset();
+        avisar("Mensagem enviada. Obrigado pelo contato, retorno em breve.", "ok");
+      })
+      .catch(function () {
+        avisar("Não foi possível enviar agora. Tente de novo em instantes." + reserva, "erro");
+      })
+      .then(function () { enviar.disabled = false; });
   });
 })();

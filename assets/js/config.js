@@ -18,9 +18,12 @@ window.SITE = {
     // Se ficar vazio, o link do LinkedIn não aparece.
     linkedin: "https://www.linkedin.com/in/felipebitencourtmagalhaes/",
 
-    // Endereço do serviço que recebe o formulário (Formspree, Web3Forms etc.).
-    // Ex.: "https://formspree.io/f/abcdwxyz"
-    // Enquanto estiver vazio, o formulário abre o e-mail do visitante com a mensagem pronta.
+    // Chave do Web3Forms (https://web3forms.com): as mensagens do formulário
+    // chegam direto no e-mail cadastrado lá. A chave pode ficar pública no site.
+    formChave: "74cb1993-37b2-43a4-821a-01c37ffade4f",
+
+    // Opcional: endereço de outro serviço de formulário (ex.: "https://formspree.io/f/abcdwxyz").
+    // Só é usado se formChave estiver vazio.
     formEndpoint: ""
   },
 
