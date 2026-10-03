@@ -58,18 +58,6 @@ window.SITE = {
       capa: "assets/img/projetos/controle-producao.jpg"
     },
     {
-      id: "eficiencia-maquina",
-      titulo: "Eficiência de Máquina",
-      setor: "Indústria",
-      resumo: "Eficiência e volume produzido por fábrica e máquina, com o detalhamento das paradas planejadas e não planejadas.",
-      mostra: "A eficiência de cada fábrica e máquina, mês a mês, ao lado do volume produzido. A página de paradas separa as horas planejadas das não planejadas e mostra em que grupo e motivo o tempo foi perdido.",
-      paginas: ["Visão Geral", "Resumo de Paradas"],
-      recursos: "Filtre por ano, mês, unidade de negócio, fábrica, classificação e máquina. Os botões trocam a evolução mensal pela visão diária e pelos grupos de paradas.",
-      ferramentas: ["Power BI", "DAX"],
-      embedUrl: "https://app.powerbi.com/view?r=eyJrIjoiMWJiZjY2YWMtNGE0ZC00NDI4LTk5ZTktYjU1OWM0Y2E1NDEwIiwidCI6IjZmN2Q0MGQ1LTUwNjctNDRkNi05MzRlLTI0MmVjODg2ODdiNSJ9",
-      capa: "assets/img/projetos/eficiencia-maquina.jpg"
-    },
-    {
       id: "recursos-humanos",
       titulo: "Recursos Humanos",
       setor: "Gestão de pessoas",
@@ -80,6 +68,30 @@ window.SITE = {
       ferramentas: ["Power BI", "DAX"],
       embedUrl: "https://app.powerbi.com/view?r=eyJrIjoiNmUwNjA5YjItMmQ0My00YWJmLWFkYzktY2NhOTE2NGZlODFkIiwidCI6IjZmN2Q0MGQ1LTUwNjctNDRkNi05MzRlLTI0MmVjODg2ODdiNSJ9",
       capa: "assets/img/projetos/recursos-humanos.jpg"
+    },
+    {
+      id: "perdas-materiais",
+      titulo: "Perdas de Materiais",
+      setor: "Indústria",
+      resumo: "Consumo de materiais acima e abaixo do previsto, em reais e em percentual, por fábrica, etapa do processo e família de material.",
+      mostra: "Quanto a fábrica consome de material além do previsto e quanto isso custa. O painel mostra a perda líquida em valor e em percentual, a evolução mês a mês, as fábricas, etapas do processo e famílias de material que concentram as perdas, e separa os materiais que geraram perda dos que geraram economia.",
+      paginas: ["Visão Geral", "Materiais"],
+      recursos: "Filtre por ano, mês, fábrica, pacote, família e etapa do processo. Na página de materiais, abra cada família para ver as subfamílias e consulte, material a material, a quantidade prevista e a real, e a perda em quantidade e em valor.",
+      ferramentas: ["Power BI", "DAX"],
+      embedUrl: "https://app.powerbi.com/view?r=eyJrIjoiYzNjYzJiODItM2I4Yi00ODQ3LTlmYjItOTRjZjkyMjAyZmM0IiwidCI6IjZmN2Q0MGQ1LTUwNjctNDRkNi05MzRlLTI0MmVjODg2ODdiNSJ9",
+      capa: "assets/img/projetos/perdas-materiais.jpg"
+    },
+    {
+      id: "eficiencia-maquina",
+      titulo: "Eficiência de Máquina",
+      setor: "Indústria",
+      resumo: "Eficiência e volume produzido por fábrica e máquina, com o detalhamento das paradas planejadas e não planejadas.",
+      mostra: "A eficiência de cada fábrica e máquina, mês a mês, ao lado do volume produzido. A página de paradas separa as horas planejadas das não planejadas e mostra em que grupo e motivo o tempo foi perdido.",
+      paginas: ["Visão Geral", "Resumo de Paradas"],
+      recursos: "Filtre por ano, mês, unidade de negócio, fábrica, classificação e máquina. Os botões trocam a evolução mensal pela visão diária e pelos grupos de paradas.",
+      ferramentas: ["Power BI", "DAX"],
+      embedUrl: "https://app.powerbi.com/view?r=eyJrIjoiMWJiZjY2YWMtNGE0ZC00NDI4LTk5ZTktYjU1OWM0Y2E1NDEwIiwidCI6IjZmN2Q0MGQ1LTUwNjctNDRkNi05MzRlLTI0MmVjODg2ODdiNSJ9",
+      capa: "assets/img/projetos/eficiencia-maquina.jpg"
     }
   ]
 };
