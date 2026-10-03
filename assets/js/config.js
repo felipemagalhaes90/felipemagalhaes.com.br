@@ -12,7 +12,7 @@ window.SITE = {
     whatsapp: "5519982828786",
     whatsappMensagem: "Olá, Felipe! Vi seu site e gostaria de conversar sobre um projeto de BI.",
 
-    email: "felipe.bitencourt.magalhaes@gmail.com",
+    email: "felipe@felipemagalhaes.com.br",
 
     // Endereço completo do perfil. Ex.: "https://www.linkedin.com/in/seu-usuario"
     // Se ficar vazio, o link do LinkedIn não aparece.
