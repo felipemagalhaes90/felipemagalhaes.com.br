@@ -195,14 +195,6 @@
       sem.appendChild(el("p", { text: "Relatório interativo disponível em breve." }));
       quadro.appendChild(sem);
     }
-    if (link && window.SITE_SEM_IFRAME) {
-      // usado só na prévia, onde relatórios externos não podem ser incorporados
-      quadro.textContent = "";
-      var previa = el("div", { class: "modal__semlink" });
-      capa(p, previa);
-      previa.appendChild(el("p", { text: "Na prévia, use \"Abrir em tela cheia\". No site publicado o relatório aparece aqui." }));
-      quadro.appendChild(previa);
-    }
     var abrir = $("modal-abrir");
     abrir.hidden = !link;
     if (link) abrir.href = link;

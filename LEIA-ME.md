@@ -1,69 +1,108 @@
 # Site Felipe Magalhães — guia rápido
 
-Site estático (HTML, CSS e JavaScript puros). Não precisa instalar nada nem "compilar": o que está nesta pasta é o site.
+Site estático (HTML, CSS e JavaScript puros), publicado em https://felipemagalhaes.com.br pelo GitHub Pages. Não precisa instalar nada nem "compilar": o que está nesta pasta é o site.
 
-## Ver o site no seu computador
+Repositório: https://github.com/felipemagalhaes90/felipemagalhaes.com.br
 
-Dê dois cliques em `index.html`. Ele abre no navegador.
+## Ver o site no seu computador (prévia)
+
+Abra um terminal nesta pasta e rode:
+
+```
+python -m http.server 8080
+```
+
+Depois abra http://localhost:8080 no navegador. Para parar, aperte Ctrl+C no terminal.
+
+Dar dois cliques em `index.html` também abre a página, mas assim os relatórios do Power BI e o envio do formulário podem não funcionar. Use a prévia acima para testar.
 
 ## Estrutura
 
 | Arquivo | Para que serve |
 |---|---|
-| `index.html` | Textos e seções da página (início, serviços, processo, sobre, contato) |
+| `index.html` | Textos e seções da página (início, serviços, processo, sobre, contato) e campos do formulário |
 | `assets/js/config.js` | **Contatos e projetos. É o arquivo que você edita no dia a dia** |
 | `assets/css/style.css` | Visual (cores e fontes ficam no bloco `:root`, no topo) |
 | `assets/js/main.js` | Funcionamento (vitrine do topo, janela do projeto, formulário) |
 | `assets/img/projetos/` | Imagens de capa dos projetos |
+| `assets/img/favicon.svg` | Ícone da aba do navegador |
+| `CNAME` | Domínio do site (`felipemagalhaes.com.br`). **Não apague nem altere**: sem ele o site perde o domínio |
+| `.nojekyll` | Arquivo vazio que diz ao GitHub Pages para publicar os arquivos como estão. Não apague |
+| `robots.txt` | Libera o site para os buscadores (Google etc.) |
+| `LEIA-ME.md` | Este guia |
 
-## 1. Preencher os contatos (`assets/js/config.js`)
+## 1. Contatos (`assets/js/config.js`)
 
-- `whatsapp`: só números, com 55 + DDD (já preenchido). Vazio = botões de WhatsApp ficam ocultos.
-- `email`: confira se é o e-mail que você quer divulgar.
-- `linkedin`: endereço completo do perfil (já preenchido). Vazio = link oculto.
-- `formChave`: chave do Web3Forms, que faz as mensagens do formulário chegarem no seu e-mail (passo 3).
+- `whatsapp`: só números, com 55 + DDD. Vazio = botões de WhatsApp ficam ocultos.
+- `whatsappMensagem`: texto que já vem escrito quando o visitante abre a conversa no WhatsApp.
+- `email`: e-mail exibido na seção de contato.
+- `linkedin`: endereço completo do perfil. Vazio = link oculto.
+- `formChave`: chave do Web3Forms, que faz as mensagens do formulário chegarem no seu e-mail (seção 3).
+- `formEndpoint`: opcional. Endereço de outro serviço de formulário (ex.: Formspree). Só é usado se `formChave` estiver vazio.
 
-## 2. Adicionar um projeto
+## 2. Projetos
 
 Em `config.js`, copie um bloco `{ ... }` dentro de `projetos`, cole abaixo do último (com vírgula entre eles) e altere os textos.
 
+- `id`: nome curto, sem espaços nem acentos (ex.: `controle-producao`). Vira o link direto do projeto.
+- `titulo`, `setor`, `resumo`: textos do card.
 - `embedUrl`: link público do relatório.
   - **Power BI**: abra o relatório > Arquivo > Inserir relatório > Publicar na Web (público). Use o link que começa com `https://app.powerbi.com/view?r=`. Links `reportEmbed?...autoAuth=true` pedem login e não funcionam para visitantes.
   - **Looker Studio**: Compartilhar > Incorporar relatório. Use o link `https://lookerstudio.google.com/embed/reporting/...`.
-- `capa`: imagem do card, salva em `assets/img/projetos/` (sugestão: 1280 x 720 px). Os três primeiros projetos com capa também aparecem no topo do site. Para trocar uma capa, salve o novo print com o mesmo nome de arquivo.
+  - Sem link, a janela mostra a capa com o aviso "Relatório interativo disponível em breve".
+- `capa`: imagem do card, salva em `assets/img/projetos/` (sugestão: 1280 x 720 px). Os três primeiros projetos com capa também aparecem no topo do site. Para trocar uma capa, salve o novo print com o mesmo nome de arquivo. Sem capa, o site desenha uma miniatura.
 - `mostra`, `paginas`, `recursos`: textos da janela do projeto. `desafio`, `solucao` e `resultado` são opcionais e aparecem se preenchidos.
+- `ferramentas`: etiquetas exibidas na janela (ex.: `["Power BI", "DAX"]`).
 
-Cada projeto ganha um link direto, útil para mandar a um cliente: `seudominio.com.br/#p-id-do-projeto`.
+Cada projeto ganha um link direto, útil para mandar a um cliente: `https://felipemagalhaes.com.br/#p-` + o `id`. Exemplo: https://felipemagalhaes.com.br/#p-controle-producao
 
 > Atenção: "Publicar na Web" deixa o relatório acessível a qualquer pessoa com o link. Em cases reais, publique só com autorização do cliente e com dados anonimizados.
-
-## Cores
-
-Tema escuro, quase preto (`#0F1316` e `#0A0D0F`), com o amarelo dos relatórios `#FED51B` como destaque. Fonte: Inter. Tudo fica no bloco `:root`, no topo de `assets/css/style.css`.
 
 ## 3. Formulário de contato
 
 As mensagens enviadas pelo formulário chegam direto no seu e-mail, pelo serviço gratuito Web3Forms. O visitante não sai do site.
+
+**Campos:** nome, e-mail, telefone/WhatsApp e mensagem são obrigatórios. Empresa é opcional, e "O que você precisa?" é uma lista de opções. O telefone é formatado enquanto a pessoa digita, como `(19) 99999-9999`, e só é aceito com DDD + 8 ou 9 dígitos.
+
+**Configurar ou trocar a chave:**
 
 1. Acesse https://web3forms.com, informe o e-mail que vai receber as mensagens e clique em "Create Access Key".
 2. Copie a chave que chega nesse e-mail.
 3. Cole em `formChave` no `config.js`.
 4. Envie uma mensagem de teste pelo site.
 
-Sem chave, o formulário avisa que não está configurado e mostra o seu e-mail.
+A chave fica ligada ao e-mail cadastrado. Para receber em outro e-mail, gere uma chave nova com ele e substitua no `config.js`. A chave não é senha e pode ficar visível no site.
 
-## 4. Publicar em felipemagalhaes.com.br (GitHub Pages, gratuito)
+**Bom saber:**
 
-O repositório tem o site dentro da pasta `site`. O arquivo `.github/workflows/pages.yml`, na raiz do repositório, manda o GitHub publicar essa pasta a cada envio para o branch `main`.
+- As primeiras mensagens podem cair no Spam. Marque como "não é spam" para as próximas chegarem na caixa de entrada.
+- O plano gratuito do Web3Forms tem um limite mensal de envios. Confira o valor atual no site deles.
+- Sem chave, o formulário avisa que não está configurado e mostra o seu e-mail.
+- Para tornar o telefone **opcional**: em `index.html`, apague o `required` do campo `f-telefone` e troque o texto "Telefone / WhatsApp" por `Telefone / WhatsApp <span class="opcional">(opcional)</span>`. Em `assets/js/main.js`, apague a linha que contém `"um telefone com DDD"`.
+- Para mudar as opções de "O que você precisa?", edite as linhas `<option>` em `index.html`.
 
-**No GitHub (uma vez):**
+## 4. Cores
 
-1. O repositório precisa ser **público** (Settings > General > Danger Zone > Change visibility).
-2. Em Settings > Pages, escolha "GitHub Actions" em "Source".
-3. No mesmo lugar, preencha "Custom domain" com `felipemagalhaes.com.br` e salve.
-4. Depois que o DNS propagar, marque "Enforce HTTPS".
+Tema escuro, quase preto (`#0F1316` e `#0A0D0F`), com o amarelo dos relatórios `#FED51B` como destaque. Fonte: Inter. Tudo fica no bloco `:root`, no topo de `assets/css/style.css`.
 
-**DNS (uma vez, no Registro.br > domínio > DNS > Configurar zona DNS):**
+## 5. Atualizar o site
+
+Altere os arquivos, confira na prévia e depois, no VS Code, vá em Controle do Código-Fonte, escreva uma mensagem, clique em Confirmar (Commit) e depois em Sincronizar.
+
+O GitHub publica sozinho em cerca de 1 minuto. Acompanhe na aba **Actions** do repositório (execução "pages build and deployment"). Se a página não mudar, aperte Ctrl+F5 no navegador.
+
+## 6. Configuração da publicação (já feita)
+
+Isto já está configurado. Serve de referência se algo precisar ser refeito.
+
+**GitHub** (repositório > Settings > Pages):
+
+- Repositório **público**.
+- Source: **Deploy from a branch**. Branch: **main**, pasta **/ (root)**.
+- Custom domain: `felipemagalhaes.com.br`.
+- **Enforce HTTPS**: marcado.
+
+**DNS** (Registro.br > domínio > DNS > Configurar zona DNS):
 
 | Tipo | Nome | Valor |
 |---|---|---|
@@ -75,8 +114,13 @@ O repositório tem o site dentro da pasta `site`. O arquivo `.github/workflows/p
 
 Não apague nem altere os registros MX e TXT (são os do e-mail) e não troque os servidores DNS.
 
-**Para atualizar o site depois:** altere os arquivos, vá em Controle do Código-Fonte no VS Code, escreva uma mensagem, clique em Confirmar (Commit) e depois em Sincronizar. A publicação roda sozinha; acompanhe na aba Actions do repositório.
+**Verificação do domínio (recomendada):** impede que outra conta do GitHub publique um site no seu domínio.
 
-## Quando lançar as automações
+1. Na sua conta do GitHub (foto do perfil > Settings > Pages, ou https://github.com/settings/pages), clique em **Add a domain**, digite `felipemagalhaes.com.br` e confirme.
+2. O GitHub mostra um registro **TXT** com nome `_github-pages-challenge-felipemagalhaes90` e um código.
+3. Crie esse TXT no Registro.br, com o nome e o código exatamente como aparecem. Ele não interfere nos registros do e-mail.
+4. Volte à tela do GitHub e clique em **Verify**. Se falhar, espere a propagação do DNS e tente de novo.
 
-Em `index.html`, procure por `servico--breve`. Remova essa classe e o selo "Em breve" e ajuste o texto. Se quiser uma seção própria de projetos de automação, dá para adicionar um terceiro `tipo` em `config.js`.
+## 7. Quando lançar as automações
+
+Em `index.html`, procure por `servico--breve`. Remova essa classe e o selo `<span class="selo selo--breve">Em breve</span>` e ajuste o texto. Para mostrar projetos de automação, adicione-os em `projetos` no `config.js` como qualquer outro projeto, usando por exemplo `setor: "Automação"`.
