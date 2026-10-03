@@ -27,9 +27,10 @@ Dar dois cliques em `index.html` também abre a página, mas assim os relatório
 | `assets/img/projetos/` | Imagens de capa dos projetos |
 | `assets/img/favicon.svg` | Ícone da aba do navegador |
 | `CNAME` | Domínio do site (`felipemagalhaes.com.br`). **Não apague nem altere**: sem ele o site perde o domínio |
-| `.nojekyll` | Arquivo vazio que diz ao GitHub Pages para publicar os arquivos como estão. Não apague |
+| `_config.yml` | Lista dos arquivos que ficam no repositório, mas **não** são publicados no site (seção 6) |
 | `robots.txt` | Libera o site para os buscadores (Google etc.) |
-| `LEIA-ME.md` | Este guia |
+| `LEIA-ME.md` | Este guia (não é publicado no site) |
+| `README.md` | Apresentação exibida na página do repositório no GitHub (não é publicado no site) |
 
 ## 1. Contatos (`assets/js/config.js`)
 
@@ -101,6 +102,10 @@ Isto já está configurado. Serve de referência se algo precisar ser refeito.
 - Source: **Deploy from a branch**. Branch: **main**, pasta **/ (root)**.
 - Custom domain: `felipemagalhaes.com.br`.
 - **Enforce HTTPS**: marcado.
+
+**O que é publicado:** todos os arquivos do repositório, exceto os listados em `exclude` no `_config.yml` (hoje, `LEIA-ME.md` e `README.md`). Ao criar um arquivo que não faz parte do site, inclua o nome dele nessa lista. Arquivos e pastas cujo nome começa com `_` ou `.` também não são publicados.
+
+O repositório é público, então tudo o que está nele continua visível no GitHub, inclusive os arquivos que não vão para o site. Não guarde senhas nem dados pessoais aqui.
 
 **DNS** (Registro.br > domínio > DNS > Configurar zona DNS):
 
