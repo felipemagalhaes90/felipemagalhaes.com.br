@@ -1,0 +1,6 @@
+# Configuração da publicação no GitHub Pages.
+# Os arquivos listados em "exclude" ficam no repositório, mas não são publicados no site.
+# Ao criar um arquivo que não faz parte do site (anotações, documentos etc.), inclua-o aqui.
+exclude:
+  - LEIA-ME.md
+  - README.md
