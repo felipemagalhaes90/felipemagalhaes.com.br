@@ -91,6 +91,8 @@ Tema escuro, quase preto (`#0F1316` e `#0A0D0F`), com o amarelo dos relatórios 
 
 Altere os arquivos, confira na prévia e depois, no VS Code, vá em Controle do Código-Fonte, escreva uma mensagem, clique em Confirmar (Commit) e depois em Sincronizar.
 
+**Se você alterou o CSS ou o JavaScript** (`style.css`, `config.js` ou `main.js`): no fim do `<head>` e do `<body>` do `index.html`, troque o número depois de `?v=` nos três arquivos (por exemplo, pela data do dia: `?v=20261106`). Isso obriga os navegadores, principalmente os de celular, a baixar a versão nova em vez de usar a que guardaram em cache.
+
 O GitHub publica sozinho em cerca de 1 minuto. Acompanhe na aba **Actions** do repositório (execução "pages build and deployment"). Se a página não mudar, aperte Ctrl+F5 no navegador.
 
 ## 6. Configuração da publicação (já feita)
