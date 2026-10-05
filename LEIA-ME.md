@@ -1,6 +1,6 @@
 # Site Felipe Magalhães — guia rápido
 
-Site estático (HTML, CSS e JavaScript puros), publicado em https://felipemagalhaes.com.br pelo GitHub Pages. Não precisa instalar nada nem "compilar": o que está nesta pasta é o site.
+Site estático (HTML, CSS e JavaScript puros), com dashboards e modelagem de dados para indústria e RH, publicado em https://felipemagalhaes.com.br pelo GitHub Pages. Não precisa instalar nada nem "compilar": o que está nesta pasta é o site.
 
 Repositório: https://github.com/felipemagalhaes90/felipemagalhaes.com.br
 
@@ -20,11 +20,12 @@ Dar dois cliques em `index.html` também abre a página, mas assim os relatório
 
 | Arquivo | Para que serve |
 |---|---|
-| `index.html` | Textos e seções da página (início, serviços, processo, sobre, contato) e campos do formulário |
+| `index.html` | Textos e seções da página (início, serviços, projetos, como trabalho, para consultores, sobre, contato) e campos do formulário |
 | `assets/js/config.js` | **Contatos e projetos. É o arquivo que você edita no dia a dia** |
 | `assets/css/style.css` | Visual (cores e fontes ficam no bloco `:root`, no topo) |
 | `assets/js/main.js` | Funcionamento (vitrine do topo, janela do projeto, formulário) |
 | `assets/img/projetos/` | Imagens de capa dos projetos |
+| `assets/img/felipe-magalhaes.jpg` | Foto da seção Sobre (quadrada, 800 x 800 px; o site mostra em círculo). Para trocar, salve a nova foto com o mesmo nome |
 | `assets/img/favicon.svg` | Ícone da aba do navegador |
 | `CNAME` | Domínio do site (`felipemagalhaes.com.br`). **Não apague nem altere**: sem ele o site perde o domínio |
 | `_config.yml` | Lista dos arquivos que ficam no repositório, mas **não** são publicados no site (seção 6) |
@@ -53,7 +54,7 @@ Em `config.js`, copie um bloco `{ ... }` dentro de `projetos`, cole abaixo do ú
   - Sem link, a janela mostra a capa com o aviso "Relatório interativo disponível em breve".
 - `capa`: imagem do card, salva em `assets/img/projetos/` (sugestão: 1280 x 720 px). Os três primeiros projetos com capa também aparecem no topo do site. Para trocar uma capa, salve o novo print com o mesmo nome de arquivo. Sem capa, o site desenha uma miniatura.
 - `mostra`, `paginas`, `recursos`: textos da janela do projeto. `desafio`, `solucao` e `resultado` são opcionais e aparecem se preenchidos.
-- `ferramentas`: etiquetas exibidas na janela (ex.: `["Power BI", "DAX"]`).
+- `ferramentas`: etiquetas exibidas na janela (ex.: `["Power BI", "SQL", "SAP", "Excel"]`).
 
 Cada projeto ganha um link direto, útil para mandar a um cliente: `https://felipemagalhaes.com.br/#p-` + o `id`. Exemplo: https://felipemagalhaes.com.br/#p-controle-producao
 
@@ -128,4 +129,20 @@ Não apague nem altere os registros MX e TXT (são os do e-mail) e não troque o
 
 ## 7. Quando lançar as automações
 
-Em `index.html`, procure por `servico--breve`. Remova essa classe e o selo `<span class="selo selo--breve">Em breve</span>` e ajuste o texto. Para mostrar projetos de automação, adicione-os em `projetos` no `config.js` como qualquer outro projeto, usando por exemplo `setor: "Automação"`.
+O card "Automações" está escondido na seção Serviços até o lançamento. Em `index.html`, procure por `servico--breve`:
+
+- Para **mostrar** o card como "Em breve": apague o atributo `hidden` da linha `<li class="servico servico--breve" hidden>`.
+- Para **lançar** o serviço: apague o `hidden`, a classe `servico--breve` e o selo `<span class="selo selo--breve">Em breve</span>`, e ajuste o texto.
+
+Para mostrar projetos de automação, adicione-os em `projetos` no `config.js` como qualquer outro projeto, usando por exemplo `setor: "Automação"`.
+
+## 8. Depoimentos
+
+O componente de depoimento já está pronto, mas desativado (fica como comentário em `index.html`, no fim da seção Projetos, logo abaixo da lista de projetos). Nada aparece no site enquanto ele estiver comentado.
+
+Quando tiver um depoimento **real e autorizado** pela pessoa:
+
+1. Em `index.html`, procure por `TODO`.
+2. Apague a linha que abre o comentário (`<!-- Depoimento: ...` e as linhas de explicação logo abaixo dela) e a linha `-->` que fecha o bloco.
+3. Preencha a frase dentro de `<p></p>`, o nome em `depoimento__nome` e o cargo e a empresa em `depoimento__cargo`.
+4. Para mais de um depoimento, repita o bloco `<figure class="depoimento">`.

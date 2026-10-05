@@ -254,6 +254,14 @@
     status.className = "form__status" + (tipo ? " " + tipo : "");
   }
 
+  // Botão "Conversar sobre parceria": já deixa o assunto de consultor selecionado
+  var parceria = $("consultores-contato");
+  if (parceria) {
+    parceria.addEventListener("click", function () {
+      $("f-assunto").value = "Sou consultor e busco um parceiro técnico";
+    });
+  }
+
   // Telefone: aceita só números e formata como (DD) 99999-9999 enquanto a pessoa digita
   var tel = $("f-telefone");
   function digitosTelefone() {
