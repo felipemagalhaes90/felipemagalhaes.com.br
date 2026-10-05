@@ -70,6 +70,18 @@ window.SITE = {
       capa: "assets/img/projetos/recursos-humanos.jpg"
     },
     {
+      id: "financas",
+      titulo: "Finanças",
+      setor: "Gestão financeira",
+      resumo: "Quanto entra, quanto sai e quanto sobra no caixa: fluxo de caixa, resultado gerencial contra o orçado e contas a receber e a pagar.",
+      mostra: "A saúde financeira da empresa em três visões. O fluxo de caixa mostra entradas, saídas, o saldo no fim de cada mês e a projeção semanal com os títulos a vencer. O resultado gerencial compara receita, margem e resultado operacional com o orçado e com o ano anterior, e abre custos e despesas por centro de custo. A página de contas acompanha o que há a receber e a pagar, a inadimplência por faixa de atraso, os maiores devedores e os fornecedores a pagar nos próximos 30 dias.",
+      paginas: ["Fluxo de Caixa", "Resultado Gerencial", "Contas a Receber e a Pagar"],
+      recursos: "Filtre por ano e mês, por centro de custo no resultado gerencial e por segmento e UF nas contas. Nas saídas por grupo de conta, use o drill-down para abrir subgrupos e contas.",
+      ferramentas: ["Power BI", "SQL", "SAP", "Excel"],
+      embedUrl: "https://app.powerbi.com/view?r=eyJrIjoiNTQwZjkyYzgtMTIzZi00YTZkLWI3NGYtNDk1ZTAzODYzNzFiIiwidCI6IjZmN2Q0MGQ1LTUwNjctNDRkNi05MzRlLTI0MmVjODg2ODdiNSJ9",
+      capa: "assets/img/projetos/financas.jpg"
+    },
+    {
       id: "perdas-materiais",
       titulo: "Perdas de Materiais",
       setor: "Indústria",
