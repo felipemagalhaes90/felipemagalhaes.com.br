@@ -1,6 +1,6 @@
 # Site Felipe Magalhães — guia rápido
 
-Site estático (HTML, CSS e JavaScript puros), com dashboards e modelagem de dados para indústria e RH, publicado em https://felipemagalhaes.com.br pelo GitHub Pages. Não precisa instalar nada nem "compilar": o que está nesta pasta é o site.
+Site estático (HTML, CSS e JavaScript puros), com dashboards e modelagem de dados para indústria, RH e finanças, publicado em https://felipemagalhaes.com.br pelo GitHub Pages. Não precisa instalar nada nem "compilar": o que está nesta pasta é o site.
 
 Repositório: https://github.com/felipemagalhaes90/felipemagalhaes.com.br
 
