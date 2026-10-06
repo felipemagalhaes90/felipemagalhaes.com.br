@@ -276,9 +276,9 @@ h3 { font-size: var(--t-lg); font-weight: 600; line-height: 1.25; letter-spacing
 .mini .mi-linha { fill: none; stroke: var(--linha-forte); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .mini .mi-eixo { fill: var(--linha); }
 
-/* Depoimento (componente comentado no index.html até haver um depoimento real) */
+/* Depoimento (seção Para consultores, abaixo do texto e dos destaques) */
 .depoimento {
-  display: flex; flex-direction: column; gap: 14px; margin-top: 20px;
+  display: flex; flex-direction: column; gap: 14px; margin-top: clamp(32px, 5vw, 56px);
   padding: clamp(20px, 3vw, 32px); background: var(--superficie);
   border: 1px solid var(--linha); border-left: 4px solid var(--amarelo); border-radius: var(--raio-g);
 }
@@ -286,6 +286,7 @@ h3 { font-size: var(--t-lg); font-weight: 600; line-height: 1.25; letter-spacing
 .depoimento__autor { display: flex; flex-direction: column; gap: 2px; font-size: var(--t-sm); }
 .depoimento__nome { font-weight: 600; }
 .depoimento__cargo { color: var(--apagado); }
+.depoimento--larga { grid-column: 1 / -1; margin-top: 0; }
 
 .vazio { padding: 28px; border: 1px dashed var(--linha-forte); border-radius: var(--raio-g); color: var(--apagado); }
 

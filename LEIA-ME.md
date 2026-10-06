@@ -140,11 +140,6 @@ Para mostrar projetos de automação, adicione-os em `projetos` no `config.js` c
 
 ## 8. Depoimentos
 
-O componente de depoimento já está pronto, mas desativado (fica como comentário em `index.html`, no fim da seção Projetos, logo abaixo da lista de projetos). Nada aparece no site enquanto ele estiver comentado.
+Os depoimentos ficam em `index.html`, na seção "Para consultores", logo abaixo do texto e dos três destaques (procure por `class="depoimento"`). Hoje há um, de Cleydson Honório Sathler (InovarData).
 
-Quando tiver um depoimento **real e autorizado** pela pessoa:
-
-1. Em `index.html`, procure por `TODO`.
-2. Apague a linha que abre o comentário (`<!-- Depoimento: ...` e as linhas de explicação logo abaixo dela) e a linha `-->` que fecha o bloco.
-3. Preencha a frase dentro de `<p></p>`, o nome em `depoimento__nome` e o cargo e a empresa em `depoimento__cargo`.
-4. Para mais de um depoimento, repita o bloco `<figure class="depoimento">`.
+Para incluir outro depoimento **real e autorizado** pela pessoa, copie o bloco `<figure class="depoimento"> ... </figure>` inteiro, cole logo abaixo e troque a frase, o nome (`depoimento__nome`) e as linhas de assinatura (`depoimento__cargo`). Publique só os dados de contato que a pessoa autorizou.
